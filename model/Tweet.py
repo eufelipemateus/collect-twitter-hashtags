@@ -1,5 +1,5 @@
 from sqlobject import *
-from mysql import *
+from utils.mysql import *
 
 
 class Tweet(SQLObject):

@@ -2,8 +2,8 @@ import json
 import twitter
 from datetime import datetime
 
-from model.Tweets import Tweet 
-from model.Hashtag import Hashtag
+from model.Tweet import Tweet 
+from model.Hashtags import Hashtag
 from model.UserMention import UserMention
 
 

@@ -1,12 +1,12 @@
 import json
 from datetime import *
-from mysql import *
+from utils.mysql import *
 
 from collections import Counter
 import re
 
-from model.Tweets import Tweet 
-from model.Hashtag import Hashtag
+from model.Tweet import Tweet 
+from model.Hashtags import Hashtag
 from model.UserMention import UserMention
 
 NowDate = datetime.now()
