@@ -10,3 +10,5 @@ class Collect(SQLObject):
     collected_started = DateTimeCol()
     collected_ended = DateTimeCol(default=None)
     hashtags = MultipleJoin('Hashtag')
+    class sqlmeta:
+        table = "collects"

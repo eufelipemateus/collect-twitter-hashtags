@@ -13,7 +13,7 @@ def main():
     parser = argparse.ArgumentParser(
         prog='thts',
         usage='%(prog)s [options]',
-        description ='This programa collect data from twitter and sabe on database.'
+        description ='This programa collect data from twitter and seed on database.'
     ) 
   
     parser.add_argument('-run', '--run-job', action='store_true', help='Run cron job.')

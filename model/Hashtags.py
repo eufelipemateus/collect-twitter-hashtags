@@ -9,3 +9,6 @@ class Hashtag(SQLObject):
     url= StringCol()
     location = ForeignKey('Woeid')
     created = DateTimeCol()
+
+    class sqlmeta:
+        table = "hashtags"
