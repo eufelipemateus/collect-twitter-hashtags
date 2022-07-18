@@ -4,6 +4,7 @@ from dateutil import parser
 
 from utils.twitter import Conn
 from utils.console import color
+from utils.mysql import conn
 from model.Hashtags import Hashtag
 from model.Woeids import Woeid
 from model.Collects import Collect
@@ -15,6 +16,10 @@ def collect_hashtag():
     print(f'{color.BOLD }{color.GREEN}[Collecting data from Twitter...]{color.END} {color.END} \n')
     print(f'{color.BLUE} Started at: {str(NowDate)} {color.END} \n')
     print(f'-----------------------------------------------------\n')
+
+    trans = conn.transaction()
+    Collect._connection = trans
+    Hashtag._connection = trans
 
     CollectObj = Collect(collected_started= NowDate)
     for WoeidObject in Woeid.select():
@@ -43,8 +48,11 @@ def collect_hashtag():
             logging.error(f'{color.RED}It is not possiblie get data from {WoeidObject.country}.{color.END}')
             logging.debug(ae)
             CollectObj.set(count_runtime_error = CollectObj.count_runtime_error + 1)
+
     NowDate = datetime.now()
     CollectObj.set(collected_ended= NowDate)
+    trans.commit(close=True)
+    
     print(f'-----------------------------------------------------\n')
     print(f'{color.YELLOW} Finished at: {str(NowDate)} {color.END} \n\n\n')
     print(f'{color.PURPLE}  Thank you!! Bye! {color.END} \n')
