@@ -17,17 +17,16 @@ def run_threaded(job_func):
     job_thread.start()
 
 def main(): 
-  
+
     parser = argparse.ArgumentParser(
         prog='thts',
         usage='%(prog)s [options]',
         description ='This programa collect data from twitter and seed on database.'
     ) 
-  
+
     parser.add_argument('-run', '--run-job', action='store_true', help='Run cron job.')
     parser.add_argument('-m','--migration', action='store_true',  help ='Migrate database  Create and seed all tables.') 
-    parser.add_argument('-l', '--log-level', default='WARNING',
-                                  help='Set log level')
+    parser.add_argument('-l', '--log-level', default='WARNING', help='Set log level')
 
     parser.add_argument('-lf', '--log-file',help='Set log file to save logs')
     parser.add_argument('-c','--collect-hashtags', action='store_true', help="Collect hashtags from twitter. ")
